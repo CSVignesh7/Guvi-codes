@@ -20,11 +20,22 @@ class TranslatetoString{
          if(num<27){
        	  String rp=Character.toString(chararray[num]);
        	  sb.replace(i,i+2, rp);
-       	  list.add(sb.toString());
-         j=j+1;
+       	  if(checkString(sb.toString())!=true){
+       		  list.add(sb.toString());
+              j=j+1;		  
+       	  }
          }
          
         }
+	}
+	public boolean checkString(String ss){
+		  for(String s:list){
+			  if(s.equals(ss)){
+                return true;				  
+			  }
+		  }
+		  return false;
+		
 	}
 	
 	public void getLast(int[] arr,char[] chararray,String fs){
@@ -44,7 +55,9 @@ class TranslatetoString{
 				ls=ls.concat(cts);
 			}
 		}
+        if(checkString(ls)!=true){ 
 		list.add(ls);
+	}
 	}
 	public static void main(String args[]){
 		Scanner sc=new Scanner(System.in);
