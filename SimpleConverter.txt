@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Simple Unit Converter</title>
+</head>
+<body >
+<h1 align="center">Simple Unit Converter</h1>
+<form action="Kilos" method="get">
+Kilos To Pounds or Vice Versa
+<input type ="number" name="quantity">
+convert from
+<select name="from">
+<option value="Kilos">Kilos</option>
+<option value="pounds">Pounds</option>
+</select>
+<input type="submit">
+</form>
+<br><br>
+<form action="Metres" method="get">
+Metres to yards or Vice Versa
+<input type ="number" name="quantity">
+convert from
+<select name="from">
+<option value="metres">Meters</option>
+<option value="yards">Yards</option>
+</select>
+<input type="submit">
+</form>
+<br><br>
+<form action="celsius" method="get">
+Celsius to Fahreinheit or Vice Versa
+<input type ="number" name="quantity">
+convert from
+<select name="from">
+<option value="celsius">Celsius</option>
+<option value="fahreinheit">Fahreinheit</option>
+</select>
+<input type="submit">
+</form>
+</body>
+</html>
+
+
+
+
+
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package com.Webapplication1;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+/**
+ *
+ * @author user
+ */
+@WebServlet(name = "Kilos", urlPatterns = {"/Kilos"})
+public class Kilos extends HttpServlet {
+
+    protected void service(HttpServletRequest request, HttpServletResponse response) throws IOException
+    {
+        String str=request.getParameter("from");
+        PrintWriter out=response.getWriter();
+        int val=Integer.parseInt(request.getParameter("quantity"));
+        double ans=0;
+        if(str.equals("Kilos")){
+            ans=val*2.204;
+            out.println("The Pound Value of "+val +" is "+ans);
+        }
+        else{
+            ans=val*0.45;
+            out.println("The Kilogram Value of "+val +" is "+ans);
+        }
+    }           
+}
+    
+
+
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+@WebServlet(urlPatterns = {"/Metres"})
+public class Metres extends HttpServlet {
+    protected void service(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+  String str=request.getParameter("from");
+        PrintWriter out=response.getWriter();
+        int val=Integer.parseInt(request.getParameter("quantity"));
+        double ans=0;
+        if(str.equals("metres")){
+            ans=val*1.09;
+            out.println("The yard Value of "+val +" is "+ans);
+        }
+        else{
+            ans=val*0.91;
+            out.println("The metre Value of "+val +" is "+ans);
+        }
+    }
+}
+
+
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+/**
+ *
+ * @author user
+ */
+@WebServlet(urlPatterns = {"/celsius"})
+public class celsius extends HttpServlet {
+    protected void service(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+String str=request.getParameter("from");
+        PrintWriter out=response.getWriter();
+        int val=Integer.parseInt(request.getParameter("quantity"));
+        double ans=0;
+        if(str.equals("celsius")){
+            ans=(val*1.8)+32;
+            out.println("The Fahreinheit Value of "+val +" is "+ans);
+        }
+        else{
+            ans=(val-32)*0.555;
+            out.println("The celsius Value of "+val +" is "+ans);
+        }
+    }
+}
+
