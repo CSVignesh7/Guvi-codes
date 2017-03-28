@@ -1,5 +1,5 @@
 import java.util.*;
-public class ClosettoZero 
+public class ClosettoZerotwo
 {
     public static void main(String[] args) 
    {
